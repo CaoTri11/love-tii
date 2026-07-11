@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ngủ ngon nha ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Quicksand',sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+    position:relative;
+    background-image:url("https://uploads.onecompiler.io/44uwhz322/1783785347824/A%CC%89nh%20chu%CC%A3p%20ma%CC%80n%20hi%CC%80nh%202026-07-11%20225328.png");
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;
+}
+
+/* Lớp phủ làm nền tối nhẹ để chữ dễ đọc */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.18);
+    z-index:0;
+}
+
+/* Đảm bảo hộp nằm trên lớp phủ */
+.box{
+    position:relative;
+    z-index:10;
+    width:420px;
+    max-width:90%;
+    background:rgba(255,255,255,.82);
+    backdrop-filter:blur(12px);
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,.3);
+    border:2px solid rgba(255,255,255,.4);
+}
+
+h1{
+    color:#ff4d6d;
+    font-size:30px;
+    margin-bottom:25px;
+    line-height:1.5;
+}
+
+p{
+    color:#555;
+    font-size:20px;
+    line-height:1.8;
+    margin-top:15px;
+}
+
+button{
+    padding:15px 35px;
+    border:none;
+    border-radius:40px;
+    font-size:20px;
+    cursor:pointer;
+    background:linear-gradient(135deg,#ff758c,#ff4d6d);
+    color:white;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.heart{
+    position:fixed;
+    bottom:-30px;
+    font-size:25px;
+    animation:fly linear forwards;
+    pointer-events:none;
+    opacity:.5;
+}
+
+@keyframes fly{
+0%{
+    transform:translateY(0);
+    opacity:0;
+}
+20%{
+    opacity:1;
+}
+100%{
+    transform:translateY(-120vh) translateX(60px);
+    opacity:0;
+}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box" id="box">
+<h1>
+Helloo bé , em mở cnay di
+</h1>
+
+<button onclick="openLetter()">
+Mở ii
+</button>
+</div>
+
+<script>
+function heart(){
+const h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=4+Math.random()*3+"s";
+h.style.fontSize=20+Math.random()*25+"px";
+document.body.appendChild(h);
+setTimeout(()=>{
+h.remove();
+},7000);
+}
+setInterval(heart,350);
+
+function openLetter(){
+document.getElementById("box").innerHTML=`
+<h1>
+Em nào bùn ngủ ó
+</h1>
+
+<button onclick="goodnight()">
+Bgio neeee
+</button>
+`;
+}
+
+function goodnight(){
+let duration=3000;
+let end=Date.now()+duration;
+
+(function frame(){
+confetti({
+particleCount:5,
+spread:70,
+origin:{x:0,y:.8},
+colors:["#ff4d6d","#ff758c","#ffffff"]
+});
+
+confetti({
+particleCount:5,
+spread:70,
+origin:{x:1,y:.8},
+colors:["#ff4d6d","#ff758c","#ffffff"]
+});
+
+if(Date.now()<end){
+requestAnimationFrame(frame);
+}
+})();
+
+document.body.style.background="linear-gradient(135deg,#a8d8ff,#dbeeff)";
+document.getElementById("box").innerHTML=`
+<h1>
+ Chúc em ngủ ngoan nhaa
+</h1>
+
+<p>
+Chúc em có một giấc ngủ thật ngon,<br>
+mơ thật nhiều giấc mơ đẹp. <br><br>
+Mai thức dậy nhớ nhắn a nho.<br>
+</p>
+`;
+}
+</script>
+
+</body>
+</html>
